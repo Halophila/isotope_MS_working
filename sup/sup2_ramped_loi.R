@@ -1,7 +1,7 @@
 library(tidyverse)
 library(plotrix)
 library(cowplot)
-ramped=read_csv("Howard_et_al_data.csv")
+ramped=read_csv("./Howard_et_al_data.csv")
 
 x0 = 100*(ramped$org_wt)/(ramped$org_wt)
 x160 = 100*(ramped$`160remains`)/(ramped$org_wt)
@@ -83,4 +83,4 @@ big_plot <- plot_grid(top_plot, bottom_plot, ncol = 1, rel_heights = c(.9,1),
                       align = 'v', axis = 'l') # aligning vertically along the left axis
 
 
-ggsave("ramped_loi.pdf",big_plot, width = 6.8, height = 4.6)
+ggsave("sup2_ramped_loi.pdf",big_plot, width = 6.8, height = 4.6)

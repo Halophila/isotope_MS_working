@@ -1,7 +1,8 @@
 library(gvlma)
 library(tidyverse)
 library(cowplot)
-df=read.csv("Howard_et_al_sup_data.csv")
+library(personalFunctions)
+df=read.csv("./Howard_et_al_sup_data.csv")
 
 
 ####160
@@ -54,7 +55,7 @@ t300 <- df %>%
 
 ###400
 ###
-equation = equationMAker(lm(df$X400Corg~df$X400LOI))
+equation = equationPrinter(lm(df$X400Corg~df$X400LOI))
 
 t400 <- df %>% 
   ggplot(aes(X400LOI,X400Corg))+
@@ -158,5 +159,5 @@ big_plot <- plot_grid(t160, t300, t400, t500, t550, t600, ncol = 1,
   draw_label(expression(paste("Soil C"[org],' content lost (% dry wt.)')), x=  0, y=0.5, vjust= 1.4, 
              angle=90, size = 20)
 
-ggsave("sup_bigplot.pdf",big_plot, width = 10.8, height = 12)
+ggsave("sup3_bigplot_CorgLOI.pdf",big_plot, width = 10.8, height = 12)
 

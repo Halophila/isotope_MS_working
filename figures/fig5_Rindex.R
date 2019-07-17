@@ -122,7 +122,7 @@ big_plot <- plot_grid(mud_plot, Corg_plot, ncol = 2, rel_widths = c(1,0.9),
                       align = 'h', axis = 'l') # aligning vertically along the left axis
 
 
-ggsave("Rindex.pdf",big_plot, width = 8.8, height = 4.3)
+ggsave("fig5_Rindex.pdf",big_plot, width = 8.8, height = 4.3)
 
 
 

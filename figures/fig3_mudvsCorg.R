@@ -56,12 +56,5 @@ mudvsCorg_regional <- df %>%
 
 mudvsCorg_regional
 
-ggsave("mudvsCorg_regional.pdf",mudvsCorg_regional, width = 4.8, height = 4.8)
+ggsave("fig3_mudvsCorg.pdf",mudvsCorg_regional, width = 4.8, height = 4.8)
 
-
-
-
-df_covar <- df %>% filter(better_location !="Eastern FL Bay")
-
-fit1 <- aov(Corg~mud*better_location, data = df_covar)
-fit2 <- aov(Corg~mud+better_location, data = df_covar)

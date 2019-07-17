@@ -60,7 +60,7 @@ isotope_Corg_plot <- df_tall %>%
   annotate("text", label = eqn1_Corg, x = 7.5, y = -9.2,parse = TRUE)+
   annotate("text", label = eqn2_Corg, x = 7.5, y = -10.10,parse = TRUE)
 
-cairo_pdf(filename = "isotope_Corg_plot.pdf", width = 4.8, height = 4.6)
+cairo_pdf(filename = "fig7_isotope_Corg.pdf", width = 4.8, height = 4.6)
 print(isotope_Corg_plot) # cairo_pdf only opens the graphics device, need to print the plot
 dev.off() # and need to close the device
 

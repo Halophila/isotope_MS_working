@@ -55,7 +55,7 @@ isotope_seagrass_plot <- df_tall %>%
 
 
 
-cairo_pdf(filename = "isotope_seagrass_plot.pdf", width = 4.8, height = 4.6) ##special charater requires cairo, cant use ggsave
+cairo_pdf(filename = "fig6_isotope_seagrass.pdf", width = 4.8, height = 4.6) ##special charater requires cairo, cant use ggsave
 print(isotope_seagrass_plot) # cairo_pdf only opens the graphics device, need to print the plot
 dev.off() #  needs to close the device
 

@@ -52,6 +52,6 @@ map <- leaflet(options = leafletOptions(zoomControl = FALSE,
 
 map
 
-mapshot(map, file = "fig1map.png", vwidth = 792,
+mapshot(map, file = "fig1_sitemap.png", vwidth = 792,
         vheight = 544, zoom = 3 ) 
 

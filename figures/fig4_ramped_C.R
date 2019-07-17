@@ -92,5 +92,5 @@ big_plot <- plot_grid(top_plot, bottom_plot, ncol = 1, rel_heights = c(.9,1),
                       align = 'v', axis = 'l') # aligning vertically along the left axis
 
 
-ggsave("ramped_C.pdf",big_plot, width = 4.8, height = 6.6)
+ggsave("fig4_ramped_C.pdf", big_plot, width = 4.8, height = 6.6)
 

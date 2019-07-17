@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%% file template.tex %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is a general template file for the LaTeX package SVJour3
+% for Springer journals.          Springer Heidelberg 2010/09/16
+%
+% Copy it to a new file with a new name and use it as the basis
+% for your article. Delete % signs as needed.
+%
+% This template includes a few options for different layouts and
+% content for various journals. Please consult a previous issue of
+% your journal as needed.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% First comes an example EPS file -- just ignore it and
+% proceed on the \documentclass line
+% your LaTeX will extract the file if required
+%\begin{filecontents*}{example.eps}
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 19 19 221 221
+%%CreationDate: M
+%\documentclass{svjour3}                     % onecolumn (standard format)
+\documentclass{report}     % onecolumn (ditto)
+%\documentclass[smallcondensed]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+%\smartqed  % flush right qed marks, e.g. at end of proof
+\usepackage[letterpaper, margin=0.9in]{geometry}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage[authoryear,round]{natbib}
+\usepackage{caption}
+\usepackage{booktabs}
+%\usepackage[sectionbib]{chapterbib}
+\usepackage[usenames, dvipsnames]{color}   %May be necessary if you want to color links
+\usepackage[hidelinks,linktoc=all]{hyperref}
+\usepackage{textgreek}
+\usepackage{mathpazo}
+\usepackage{newtxtext,newtxmath,amsmath}
+\usepackage[utf8]{inputenc}
+\renewcommand{\arraystretch}{1.5}
+\usepackage[
+singlelinecheck=false 
+]{caption}
+\pagenumbering{gobble}
+\usepackage{textcomp}
+
+
+\makeatletter
+\renewcommand*{\thetable}{\arabic{table}}
+\renewcommand*{\thefigure}{\arabic{figure}}
+\let\c@table\c@figure
+\makeatother 
+
+%\renewcommand{\figurename}{Online Resource}
+%\usepackage[figurename=Online Resource]{caption}
+\captionsetup[figure]{labelfont={bf},name={Online Resource},labelsep=space}
+\captionsetup[table]{labelfont={bf},name={Online Resource},labelsep=space}
+%\usepackage[labelfont=bf]{caption}
+%
+% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+%\usepackage{latexsym}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+% \journalname{myjournal}
+%
+\begin{document}
+
+
+
+
+
+
+
+
+\section*{Spatial variation in organic matter recalcitrance and $\delta$\textsuperscript{13}C of organic and inorganic carbon in seagrass sediments as indicators of carbon cycling and exchange processes}
+
+
+\subsection*{Supplementary material \bigskip}
+Jason L. Howard $\cdot$ Vicki Absten $\cdot$ Christian C. Lopes $\cdot$ Sara S. Wilson $\cdot$ James W. Fourqurean
+
+
+
+\bigskip
+\bigskip
+
+\begin{figure}[h]
+  \centering
+   \includegraphics[width=.99\textwidth,clip, trim={0.1mm 0.1mm 0.1mm 0.1mm}]{map_Corg_sup.png}
+\caption{C\textsubscript{org} content in surface soils across South Florida sampling sites.}
+  \label{Online Resource:2F0}
+\end{figure}
+
+
+\begin{figure}[h]
+  \centering
+   \includegraphics[width=.99\textwidth,clip, trim={0.1mm 0.1mm 0.1mm 0.1mm}]{ramped_loi}
+\caption{Weight loss during controlled oxidation from from 65 \textdegree C to 600 \textdegree C. Top panel shows decrease in sample weight as temperature increases, while bottom panel shows percent of total weight loss at each oxidation step. Data represent mean $\pm$ SE (n = 90).}
+  \label{Online Resource:2F1}
+\end{figure}
+
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.95\textwidth]{sup_bigplot}
+\caption{Relationship between LOI and decrease in C content for each temperature step. Lines represent significant correlations (linear regression, p < 0.05).}
+  \label{fig:2F2}
+\end{figure}
+
+\clearpage
+
+
+\end{document}
+
+
+
+
+% end of file template.tex

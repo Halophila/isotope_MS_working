@@ -33,8 +33,6 @@ df_tall <- bind_rows(inorg,org)
 
 ###plots
 
-
-
 isotope_seagrass_plot <- df_tall %>% 
         ggplot(aes(d13seagrass,d13, fill=type))+
         geom_point(shape=21, color = 'black')+

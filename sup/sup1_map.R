@@ -7,10 +7,10 @@ library(mapview)
 library(Hmisc)
 library(wesanderson)
 
-df=read_csv("./Howard_et_al_data.csv")
+df <- read_csv("./Howard_et_al_data.csv")
 places <- read_csv("./map_place_labels.csv")
 
-color_map = tibble(colors = wes_palettes$IsleofDogs2,
+color_map <-  tibble(colors = wes_palettes$IsleofDogs2,
                        code = 1:5)
 ##map 1
 
@@ -19,25 +19,20 @@ sites <- tibble("long" = df$`Longitude (dd.ddddd)`,
                     "Corg" = df$Corg) %>% 
   mutate(groups = cut2(.$Corg,g = 5)) %>% 
   mutate(code = as.numeric(groups)) %>% 
-  left_join(y = color_map, by = "code") 
-
-
-sites$groups= gsub(","," - ", sites$groups)
-sites$groups<-gsub("\\[","(",sites$groups)
-sites$groups %>% unique()
+  left_join(y = color_map, by = "code") %>% 
+  
+  mutate(groups = str_replace_all(groups, ",", "-")) %>% 
+  mutate(groups = str_replace_all(groups, "\\[", "(")) %>% 
+  mutate(groups = str_replace_all(groups, "\\]", ")")) 
 
 
 
 map <- leaflet(options = leafletOptions(zoomControl = FALSE, 
-                                        attributionControl = FALSE)) %>% 
-  # add ocean basemap
+                                        attributionControl = FALSE)) %>%   # add ocean basemap
   addProviderTiles(providers$Esri.WorldImagery) %>%
+  setView(lng = -81.0, lat = (24.4+25.6)/2, zoom = 9) %>%   # focus map in a certain area / zoom level
   
-  # focus map in a certain area / zoom level
-  setView(lng = -81.0, lat = (24.4+25.6)/2, zoom = 9) %>%
-  
-  # add inset map
-  addMiniMap(tiles = providers$Esri.WorldStreetMap,
+  addMiniMap(tiles = providers$Esri.WorldStreetMap,   # add inset map
              position = 'topleft', 
              width = 200, height = 150,
              toggleDisplay = FALSE) %>% 

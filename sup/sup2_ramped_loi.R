@@ -1,7 +1,7 @@
 library(tidyverse)
 library(plotrix)
 library(cowplot)
-ramped=read_csv("./Howard_et_al_data.csv")
+ramped <- read_csv("./Howard_et_al_data.csv")
 
 x0 = 100*(ramped$org_wt)/(ramped$org_wt)
 x160 = 100*(ramped$`160remains`)/(ramped$org_wt)
@@ -41,7 +41,7 @@ top_plot <- summary %>%
 
 #####
 
-totalweightloss=ramped$`160off`+ramped$`300off`+ramped$`400off`+
+totalweightloss <- ramped$`160off`+ramped$`300off`+ramped$`400off`+
   ramped$`500off`+ramped$`550off`+ramped$`600off`
 
 "x0" = (ramped$org_wt)-(ramped$org_wt)
@@ -70,10 +70,10 @@ bottom_plot <- summary %>%
   geom_errorbar(aes(ymin=mean-SE, ymax=mean+SE), width=20) +
   geom_line(linetype = "dashed")+
   scale_x_continuous(expand = c(0, 0), 
-                     breaks=seq(from = 0, to = 600, by = 100),
+                     breaks = seq(from = 0, to = 600, by = 100),
                      limits = c(0,610))+
   scale_y_continuous(expand = c(0, 0), 
-                     breaks=seq(0,30,5),
+                     breaks = seq(0,30,5),
                      limits = c(0,30))+
   labs(x = "Temperature (C)",
        y = "Wt. loss (% of total)")

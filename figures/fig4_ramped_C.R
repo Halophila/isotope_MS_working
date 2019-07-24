@@ -1,7 +1,8 @@
 library(tidyverse)
 library(plotrix)
 library(cowplot)
-ramped=read.csv("Howard_et_al_data.csv") %>% as_tibble()
+
+ramped <- read.csv("Howard_et_al_data.csv")
 
 
 #### top plot
@@ -20,7 +21,7 @@ averageramped <- tibble(x0,x160,x300,x400,x500,x550,x600) %>%
 
 summary <- averageramped %>% 
   group_by(temp_id) %>% 
-  summarise(mean= mean(values, na.rm = TRUE), 
+  summarise(mean =  mean(values, na.rm = TRUE), 
             SE = std.error(values, na.rm = TRUE)) %>% 
   ungroup() %>% 
   mutate(temp = as.numeric(str_remove_all(temp_id, "x")))
@@ -30,18 +31,18 @@ summary <- averageramped %>%
 top_plot <- summary %>% 
   ggplot(aes(temp,mean))+
   geom_point()+  
-  geom_errorbar(aes(ymin=mean-SE, ymax=mean+SE), width=20) +
+  geom_errorbar(aes(ymin = mean-SE, ymax = mean+SE), width = 20) +
   geom_line(linetype = "dashed")+
   scale_x_continuous(expand = c(0, 0), 
-                     breaks=seq(from = 0, to = 600, by = 100),
+                     breaks = seq(from = 0, to = 600, by = 100),
                      limits = c(0,610))+
   scale_y_continuous(expand = c(0, 0), 
-                     breaks=c(9,10,11,12),
+                     breaks = c(9,10,11,12),
                      limits = c(9,12.2))+
   labs(x = "",
        y = "C content (% dry wt.)")+
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank())
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_blank())
 
 #####
 
@@ -49,7 +50,9 @@ top_plot <- summary %>%
 ########
 ############
 
-ramped$totalClost= (ramped$X160Wt.Clost)+(ramped$X300Wt.Clost)+(ramped$X400Wt.Clost)+(ramped$X500Wt.Clost)+(ramped$X550Wt.Clost)
+ramped$totalClost =  (ramped$X160Wt.Clost) + (ramped$X300Wt.Clost)+
+  (ramped$X400Wt.Clost) + (ramped$X500Wt.Clost) + (ramped$X550Wt.Clost)
+
 "x0" = (ramped$org_wt)-(ramped$org_wt)
 "x160" = 100*(ramped$X160Wt.Clost)/(ramped$totalClost)
 "x300" = 100*(ramped$X300Wt.Clost)/(ramped$totalClost)              
@@ -65,7 +68,7 @@ averageramped <- tibble(x0,x160,x300,x400,x500,x550,x600) %>%
 
 summary <- averageramped %>% 
   group_by(temp_id) %>% 
-  summarise(mean= mean(values, na.rm = TRUE), 
+  summarise(mean =  mean(values, na.rm = TRUE), 
             SE = std.error(values, na.rm = TRUE)) %>% 
   ungroup() %>% 
   mutate(temp = as.numeric(str_remove_all(temp_id, "x")))
@@ -75,13 +78,13 @@ summary <- averageramped %>%
 bottom_plot <- summary %>% 
   ggplot(aes(temp,mean))+
   geom_point()+  
-  geom_errorbar(aes(ymin=mean-SE, ymax=mean+SE), width=20) +
+  geom_errorbar(aes(ymin = mean-SE, ymax = mean+SE), width = 20) +
   geom_line(linetype = "dashed")+
   scale_x_continuous(expand = c(0, 0), 
-                     breaks=seq(from = 0, to = 600, by = 100),
+                     breaks = seq(from = 0, to = 600, by = 100),
                      limits = c(0,610))+
   scale_y_continuous(expand = c(0, 0), 
-                     breaks=c(0,10,20,30,40),
+                     breaks = c(0,10,20,30,40),
                      limits = c(0,40))+
   labs(x = "Temperature (°C)",
        y = "C loss (% of total)")

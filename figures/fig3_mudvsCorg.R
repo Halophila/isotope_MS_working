@@ -1,12 +1,12 @@
 library(tidyverse)
 library(cowplot)
-library(personalFunctions)
+library(personalFunctions) ## from Halophila github
 
 cbPalette <- c("#56B4E9", "#009E73", "#E69F00")
-df=read.csv("Howard_et_al_data.csv")
+df <- read_csv("Howard_et_al_data.csv")
 
 
-df$better_location = factor(df$better_location,c("Western FL Bay",
+df$better_location <- factor(df$better_location,c("Western FL Bay",
                                              "Eastern FL Bay",
                                              "FL keys"))
 
@@ -34,7 +34,6 @@ mudvsCorg_regional <- df %>%
                                                     "FL keys"))+
     scale_shape_manual(values=c(18,1,19))+
     
-
     geom_abline(slope = west_model$coefficients[2], 
                 intercept = west_model$coefficients[1],
                 color = "black", linetype = "solid", size = 1.5)+

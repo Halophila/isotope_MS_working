@@ -5,7 +5,7 @@ library(gridExtra)
 library(quantreg)
 library(personalFunctions)
 
-ramped=read_csv("Howard_et_al_data.csv")
+ramped <- read_csv("Howard_et_al_data.csv")
 theme_set(theme_cowplot())
 
 mytheme <- gridExtra::ttheme_default(
@@ -30,28 +30,27 @@ ratio <- tibble("Corg"= ramped$Corg,
          Rpindex = (x500 + x550)/(x500 + x550 + x160 + x300 + x400))
 
 
-ratio$sum=(ratio$x160+ratio$x300+ratio$x400)+(ratio$x500+ratio$x550)
-ratio$ratio=(ratio$x160+ratio$x300+ratio$x400)/(ratio$x500+ratio$x550)
-ratio$Rpindex=(ratio$x500+ratio$x550)/(ratio$x500+ratio$x550+ratio$x160+ratio$x300+ratio$x400)
-## alt at 600 -- ratio$Rpindex=(ratio$x500+ratio$x550+ratio$x600)/(ratio$x500+ratio$x550+ratio$x600+ratio$x160+ratio$x300+ratio$x400)
+ratio$sum <- (ratio$x160+ratio$x300+ratio$x400)+(ratio$x500+ratio$x550)
+ratio$ratio <- (ratio$x160+ratio$x300+ratio$x400)/(ratio$x500+ratio$x550)
+ratio$Rpindex <- (ratio$x500+ratio$x550)/(ratio$x500+ratio$x550+ratio$x160+ratio$x300+ratio$x400)
 
 
-line=lm(ratio$Rpindex~ratio$mud)
+line <- lm(ratio$Rpindex~ratio$mud)
 gvlma(line)
 summary(line)
 
 
 
 ####
-Model = c("y = 0.5600 - 0.0028")
+Model <-  c("y = 0.5600 - 0.0028")
 `p value` <- c("p < 0.05; p = 0.00")
-table1 = tibble(Model, `p value`)
+table1 <-  tibble(Model, `p value`)
 
 
 Quantile <- c("95%", "50%","5%")
 Model <- c("y = 0.75-0.05x", "y = 0.52-0.03x", "y = 0.35-0.01x")
 `p value` <- c("p < 0.05; p = 0.00", "p > 0.05; p = 0.00", "p > 0.05; p = 0.14")
-table2 = data_frame(Quantile, Model, `p value`)
+table2 = tibble(Quantile, Model, `p value`)
 
 ####
 
@@ -73,18 +72,18 @@ mud_plot <- ratio %>%
 #######
 ####
 
-alltau=c(0.95,.5,.05)
-linewt=c(2,1,2)
+alltau <- c(0.95,.5,.05)
+linewt <- c(2,1,2)
 
 lineweight <- data.frame("alltau" = alltau,
                          "linewt"= linewt)
 
-model=tibble(slope = 0, int=0)
+model <- tibble(slope = 0, int=0)
 
 for (i in seq_along(alltau)){
   qr1_i <- rq(ratio$Rpindex~ratio$Corg, tau = alltau[i])
-  intercept=coef(qr1_i)[1]
-  slope=coef(qr1_i)[2]
+  intercept <- coef(qr1_i)[1]
+  slope <- coef(qr1_i)[2]
   model[i,1] <- slope
   model[i,2] <- intercept
 }

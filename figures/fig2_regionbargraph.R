@@ -6,9 +6,10 @@ library(gridExtra)
 library(cowplot)
 library(ggplot2)
 library(plotrix)
+
 cbPalette <- c("#56B4E9", "#009E73", "#E69F00")
 
-df <- read.csv("Howard_et_al_data.csv") %>% 
+df <- read_csv("Howard_et_al_data.csv") %>% 
   select(better_location, Corg, mud) %>% 
   `colnames<-`(c("location", "Corg", "mud")) %>% 
   drop_na(mud) %>% 

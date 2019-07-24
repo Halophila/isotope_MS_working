@@ -3,11 +3,12 @@ library(cowplot)
 library(plotrix)
 library(devtools)
 library(personalFunctions)
+
 theme_set(theme_cowplot())
 
-point_colors = c("#e1e1e1","#0600e1")
+point_colors <-  c("#e1e1e1","#0600e1")
 
-df=read.csv("Howard_et_al_data.csv")
+df <- read.csv("Howard_et_al_data.csv")
 
 
 inorg <- df %>% 
